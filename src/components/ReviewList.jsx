@@ -6,6 +6,7 @@ export function ReviewList(props) {
 
   return (
     <div className='reviews'>
+      <h2>Previous Reviews</h2>
       {reviews.map((review) => (
         <Review review={review} key={review.id} />
       ))}
