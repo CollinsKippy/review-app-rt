@@ -73,8 +73,3 @@ form {
   gap: 1rem;
   margin-top: 2rem;
 }
-
-input[type='text'],
-textarea {
-  padding: 1rem;
-}
