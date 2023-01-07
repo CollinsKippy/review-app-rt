@@ -1,3 +1,9 @@
+:root {
+  --border-color: lightgray;
+  --text-color: rgb(76, 171, 248);
+  --rating-bg: rgb(3, 71, 110);
+}
+
 body {
   margin: 0;
   padding: 1rem;
@@ -6,9 +12,51 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #212121;
+  color: #fefefe;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  padding: 0 4rem;
+  max-width: 80%;
+}
+
+.reviews {
+  padding: 1rem;
+}
+
+.review-item {
+  border: 1px solid var(--border-color);
+  margin: 2rem 0;
+  border-radius: 6px;
+  padding: 0 1rem;
+}
+
+.review-item .rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 32px;
+  width: 32px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-color);
+  background-color: var(--rating-bg);
+}
+.review-item .comment {
+  color: var(--text-color);
 }
