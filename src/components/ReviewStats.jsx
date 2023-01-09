@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function ReviewStats(props) {
   const { reviews } = props;
@@ -15,5 +16,9 @@ function ReviewStats(props) {
     </div>
   );
 }
+
+ReviewStats.propTypes = {
+  reviews: PropTypes.array.isRequired,
+};
 
 export default ReviewStats;
