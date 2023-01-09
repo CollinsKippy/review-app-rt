@@ -7,6 +7,7 @@ import ReviewData from './data/ReviewData';
 
 function App() {
   const [reviews, setReviews] = useState(ReviewData);
+  const [reviewForEdit, setReviewForEdit] = useState();
 
   const onAddReview = ({ comment, rating }) => {
     const newReview = {
@@ -23,15 +24,19 @@ function App() {
   };
 
   const onEdit = (id) => {
-    const reviewForEdit = reviews.find((review) => review.id === id);
-    console.log(reviewForEdit);
+    const review = reviews.find((review) => review.id === id);
+
+    setReviewForEdit({...reviewForEdit,
+      review,
+      updated: false,
+    });
   };
 
   return (
     <div className='my-container'>
       <Title />
-      <ReviewForm onAddReview={onAddReview} />
-      <ReviewStats reviews={reviews}/>
+      <ReviewForm onAddReview={onAddReview} reviewForEdit={reviewForEdit} />
+      <ReviewStats reviews={reviews} />
       <ReviewList reviews={reviews} onDelete={onDelete} onEdit={onEdit} />
     </div>
   );
