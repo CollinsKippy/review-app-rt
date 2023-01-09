@@ -4,7 +4,7 @@ function ReviewForm(props) {
   const { onAddReview } = props;
 
   const [comment, setComment] = useState('');
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(undefined);
   const [hasError, setHasError] = useState(false);
 
   const onSubmit = (evt) => {
@@ -24,7 +24,7 @@ function ReviewForm(props) {
   return (
     <>
       <h2 className='mb-4'>Your Review</h2>
-      <form onSubmit={onSubmit} className="d-flex flex-column gap-4">
+      <form onSubmit={onSubmit} className='d-flex flex-column gap-4'>
         <div
           className='btn-group'
           role='group'

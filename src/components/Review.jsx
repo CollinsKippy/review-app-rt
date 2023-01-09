@@ -14,11 +14,11 @@ function Review(props) {
       <div className='btn-group ms-auto'>
         <button
           className='btn btn-outline-secondary'
-          onClick={() => onDelete(review)}
+          onClick={() => onDelete(review.id)}
         >
           <FaTimes />
         </button>
-        <button className='btn btn-outline-secondary' onClick={() => onEdit(review)}>
+        <button className='btn btn-outline-secondary' onClick={() => onEdit(review.id)}>
           <FaEdit />
         </button>
       </div>

@@ -14,16 +14,17 @@ function App() {
       rating,
     };
 
-    console.log(newReview);
-
     setReviews([newReview, ...reviews]);
   };
 
-  const onDelete = (review) => {
-    setReviews([...reviews.filter((r) => r.id !== review.id)]);
+  const onDelete = (id) => {
+    setReviews([reviews.filter((review) => review.id !== id)]);
   };
 
-  const onEdit = (review) => {};
+  const onEdit = (id) => {
+    const reviewForEdit = reviews.find((review) => review.id === id);
+    console.log(reviewForEdit);
+  };
 
   return (
     <div className='my-container'>
