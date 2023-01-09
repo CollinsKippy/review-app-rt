@@ -2,14 +2,10 @@ import { useState } from 'react';
 import ReviewForm from './components/ReviewForm';
 import ReviewList from './components/ReviewList';
 import Title from './components/Title';
+import ReviewData from './data/ReviewData';
 
 function App() {
-  const [reviews, setReviews] = useState([
-    { id: 1, comment: 'My Comment goes here', rating: 9.0 },
-    { id: 2, comment: 'My Comment goes here', rating: 9.0 },
-    { id: 3, comment: 'My Comment goes here', rating: 9.0 },
-    { id: 4, comment: 'My Comment goes here', rating: 9.0 },
-  ]);
+  const [reviews, setReviews] = useState(ReviewData);
 
   const onAddReview = ({ comment, rating }) => {
     const newReview = {

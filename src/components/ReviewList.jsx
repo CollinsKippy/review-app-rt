@@ -4,6 +4,10 @@ import Review from './Review';
 export function ReviewList(props) {
   const { reviews } = props;
 
+  if(!reviews || reviews.length === 0) {
+    return <h4 className='mt-5 bg-secondary p-4'>No reviews yet.</h4>
+  }
+
   return (
     <div className='reviews'>
       <h2>Previous Reviews</h2>

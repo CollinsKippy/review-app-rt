@@ -4,11 +4,11 @@ function Review(props) {
   const { review } = props;
 
   return (
-    <div className='review-item'>
+    <div className='review-item bg-secondary shadow-sm'>
       <h4 className='rating'>
         <span>{review.rating}</span>
       </h4>
-      <h4 className='comment'>{review.comment}</h4>
+      <p className='comment'>{review.comment}</p>
     </div>
   );
 }

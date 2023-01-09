@@ -4,7 +4,7 @@ function ReviewForm(props) {
   const { onAddReview } = props;
 
   const [comment, setComment] = useState('');
-  const [rating, setRating] = useState('');
+  const [rating, setRating] = useState(null);
   const [hasError, setHasError] = useState(false);
 
   const onSubmit = (evt) => {
@@ -13,16 +13,18 @@ function ReviewForm(props) {
     if (!comment || !rating) {
       setHasError(true);
     } else {
+      setHasError(false);
+
       onAddReview({ comment, rating });
       setComment('');
-      setRating(8);
+      setRating(null);
     }
   };
 
   return (
     <>
       <h2>Your Review</h2>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="d-flex flex-column gap-4">
         <div
           className='btn-group'
           role='group'
@@ -176,8 +178,8 @@ function ReviewForm(props) {
           </p>
         )}
 
-        <button type='submit' className='btn btn-primary'>
-          Add
+        <button type='submit' className='btn btn-primary w-50 shadow'>
+          Submit Comment
         </button>
       </form>
     </>
