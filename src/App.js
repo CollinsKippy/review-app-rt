@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ReviewForm from './components/ReviewForm';
 import ReviewList from './components/ReviewList';
+import ReviewStats from './components/ReviewStats';
 import Title from './components/Title';
 import ReviewData from './data/ReviewData';
 
@@ -18,7 +19,7 @@ function App() {
   };
 
   const onDelete = (id) => {
-    setReviews([reviews.filter((review) => review.id !== id)]);
+    setReviews([...reviews.filter((review) => review.id !== id)]);
   };
 
   const onEdit = (id) => {
@@ -30,6 +31,7 @@ function App() {
     <div className='my-container'>
       <Title />
       <ReviewForm onAddReview={onAddReview} />
+      <ReviewStats reviews={reviews}/>
       <ReviewList reviews={reviews} onDelete={onDelete} onEdit={onEdit} />
     </div>
   );
