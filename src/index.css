@@ -44,6 +44,7 @@ h1.app-title {
 .review-item {
   display: flex;
   flex-direction: row wrap;
+  align-items: center;
   padding: 1.8rem;
 }
 
@@ -63,6 +64,7 @@ h1.app-title {
 }
 .review-item .comment {
   color: var(--text-color-blue);
+  margin-bottom: 0 !important;
 }
 
 form {

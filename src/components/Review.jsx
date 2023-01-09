@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
+import { FaTimes } from 'react-icons/fa';
 
 function Review(props) {
   const { review } = props;
 
   return (
     <div className='review-item bg-secondary shadow-sm'>
-      <h4 className='rating'>
+      <span className='rating'>
         <span>{review.rating}</span>
-      </h4>
+      </span>
       <p className='comment'>{review.comment}</p>
     </div>
   );
