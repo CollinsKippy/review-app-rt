@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 function ReviewForm(props) {
-  const { onAddReview } = props;
+  const { onAddReview, reviewForEdit } = props;
 
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(undefined);
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(false); 
 
   const onSubmit = (evt) => {
     evt.preventDefault();
