@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaEdit } from 'react-icons/fa';
 
 function Review(props) {
-  const { review } = props;
+  const { review, onDelete, onEdit } = props;
 
   return (
     <div className='review-item bg-secondary shadow-sm'>
@@ -10,6 +10,18 @@ function Review(props) {
         <span>{review.rating}</span>
       </span>
       <p className='comment'>{review.comment}</p>
+
+      <div className='btn-group ms-auto'>
+        <button
+          className='btn btn-outline-secondary'
+          onClick={() => onDelete(review)}
+        >
+          <FaTimes />
+        </button>
+        <button className='btn btn-outline-secondary' onClick={() => onEdit(review)}>
+          <FaEdit />
+        </button>
+      </div>
     </div>
   );
 }

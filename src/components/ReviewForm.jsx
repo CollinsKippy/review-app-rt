@@ -23,7 +23,7 @@ function ReviewForm(props) {
 
   return (
     <>
-      <h2>Your Review</h2>
+      <h2 className='mb-4'>Your Review</h2>
       <form onSubmit={onSubmit} className="d-flex flex-column gap-4">
         <div
           className='btn-group'

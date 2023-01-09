@@ -19,11 +19,17 @@ function App() {
     setReviews([newReview, ...reviews]);
   };
 
+  const onDelete = (review) => {
+    setReviews([...reviews.filter((r) => r.id !== review.id)]);
+  };
+
+  const onEdit = (review) => {};
+
   return (
     <div className='my-container'>
       <Title />
       <ReviewForm onAddReview={onAddReview} />
-      <ReviewList reviews={reviews} />
+      <ReviewList reviews={reviews} onDelete={onDelete} onEdit={onEdit} />
     </div>
   );
 }
