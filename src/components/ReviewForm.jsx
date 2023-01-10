@@ -7,10 +7,18 @@ function ReviewForm(props) {
   const [rating, setRating] = useState(undefined);
   const [hasError, setHasError] = useState(false);
 
+  /**
+   * On Rating Selected (Radio button group)
+   * @param {Event} e Event
+   */
   const handleRatingSelected = (e) => {
     setRating(+e.target.value);
   };
 
+  /**
+   * Submit Form
+   * @param {Event} evt Event
+   */
   const onSubmit = (evt) => {
     evt.preventDefault();
 
