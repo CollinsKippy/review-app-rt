@@ -5,7 +5,11 @@ function ReviewForm(props) {
 
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(undefined);
-  const [hasError, setHasError] = useState(false); 
+  const [hasError, setHasError] = useState(false);
+
+  const handleRatingSelected = (e) => {
+    setRating(+e.target.value);
+  };
 
   const onSubmit = (evt) => {
     evt.preventDefault();
@@ -25,6 +29,7 @@ function ReviewForm(props) {
     <>
       <h2 className='mb-4'>Your Review</h2>
       <form onSubmit={onSubmit} className='d-flex flex-column gap-4'>
+        {/* Radiobuttons rating */}
         <div
           className='btn-group'
           role='group'
@@ -37,7 +42,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating1'
             value='1'
-            onChange={(e) => setRating(1)}
+            checked={rating === 1}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating1'>
             1
@@ -50,7 +56,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating2'
             value='2'
-            onChange={(e) => setRating(2)}
+            checked={rating === 2}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating2'>
             2
@@ -63,7 +70,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating3'
             value='3'
-            onChange={(e) => setRating(3)}
+            checked={rating === 3}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating3'>
             3
@@ -76,7 +84,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating4'
             value='4'
-            onChange={(e) => setRating(4)}
+            checked={rating === 4}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating4'>
             4
@@ -89,7 +98,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating5'
             value='5'
-            onChange={(e) => setRating(5)}
+            checked={rating === 5}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating5'>
             5
@@ -102,7 +112,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating6'
             value='6'
-            onChange={(e) => setRating(6)}
+            checked={rating === 6}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating6'>
             6
@@ -115,7 +126,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating7'
             value='7'
-            onChange={(e) => setRating(7)}
+            checked={rating === 7}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating7'>
             7
@@ -128,7 +140,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating8'
             value='8'
-            onChange={(e) => setRating(8)}
+            checked={rating === 8}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating8'>
             8
@@ -141,7 +154,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating9'
             value='9'
-            onChange={(e) => setRating(9)}
+            checked={rating === 9}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating9'>
             9
@@ -154,7 +168,8 @@ function ReviewForm(props) {
             name='rating'
             id='rating10'
             value='10'
-            onChange={(e) => setRating(10)}
+            checked={rating === 10}
+            onChange={handleRatingSelected}
           />
           <label className='btn btn-outline-primary' htmlFor='rating10'>
             10
