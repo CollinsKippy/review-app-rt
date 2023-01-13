@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function RatingSelect(props) {
-  const { onRatingSelected } = props;
+  const { onRatingSelected, updated } = props;
 
-  const [rating, setRating] = useState(10);
+  const [rating, setRating] = useState(null);
+
+  useEffect(() => {
+    if (updated) {
+      setRating(null);
+    }
+  }, [updated]);
 
   /**
    * On Rating Selected (Radio button group)
