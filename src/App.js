@@ -4,6 +4,7 @@ import ReviewList from './components/ReviewList';
 import ReviewStats from './components/ReviewStats';
 import Title from './components/Title';
 import ReviewData from './data/ReviewData';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [reviews, setReviews] = useState(ReviewData);
@@ -11,10 +12,8 @@ function App() {
   const [updated, setUpdated] = useState(false);
 
   const onAddReview = ({ comment, rating }) => {
-    setUpdated(false);
-
     const newReview = {
-      id: Math.floor(Math.random() * 1000 + 1),
+      id: uuidv4(),
       comment,
       rating,
     };

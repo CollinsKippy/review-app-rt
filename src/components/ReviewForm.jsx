@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import RatingSelect from './RatingSelect';
+import { motion } from 'framer-motion';
 
 function ReviewForm(props) {
   const { onAddReview, updated } = props;
@@ -51,9 +52,14 @@ function ReviewForm(props) {
         ></textarea>
 
         {hasError && (
-          <p className='alert alert-danger'>
+          <motion.p
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -30 }}
+            className='alert alert-danger'
+          >
             Please complete the fields above.
-          </p>
+          </motion.p>
         )}
 
         <button type='submit' className='btn btn-primary w-50 shadow'>

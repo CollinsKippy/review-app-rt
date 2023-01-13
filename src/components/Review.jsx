@@ -28,7 +28,7 @@ function Review(props) {
 
 Review.propTypes = {
   review: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     comment: PropTypes.string,
     rating: PropTypes.number,
   }),
