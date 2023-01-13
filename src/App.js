@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ReviewForm from './components/ReviewForm';
 import ReviewList from './components/ReviewList';
 import ReviewStats from './components/ReviewStats';
 import Title from './components/Title';
 import ReviewData from './data/ReviewData';
 import { v4 as uuidv4 } from 'uuid';
+import AboutPage from './pages/AboutPage';
 
 function App() {
   const [reviews, setReviews] = useState(ReviewData);
@@ -33,16 +35,34 @@ function App() {
   };
 
   return (
-    <div className='my-container'>
-      <Title />
-      <ReviewForm
-        onAddReview={onAddReview}
-        reviewForEdit={reviewForEdit}
-        updated={updated}
-      />
-      <ReviewStats reviews={reviews} />
-      <ReviewList reviews={reviews} onDelete={onDelete} onEdit={onEdit} />
-    </div>
+    <Router>
+      <div className='my-container'>
+        <Routes>
+          <Route
+            index
+            path='/'
+            element={
+              <>
+                <Title />
+                <ReviewForm
+                  onAddReview={onAddReview}
+                  reviewForEdit={reviewForEdit}
+                  updated={updated}
+                />
+                <ReviewStats reviews={reviews} />
+                <ReviewList
+                  reviews={reviews}
+                  onDelete={onDelete}
+                  onEdit={onEdit}
+                />
+              </>
+            }
+          ></Route>
+
+          <Route path='/about' element={<AboutPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
