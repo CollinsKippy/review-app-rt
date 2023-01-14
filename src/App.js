@@ -7,6 +7,8 @@ import Title from './components/Title';
 import ReviewData from './data/ReviewData';
 import { v4 as uuidv4 } from 'uuid';
 import AboutPage from './pages/AboutPage';
+import AboutIconLink from './components/AboutIconLink';
+import Navbar from './components/Navbar';
 
 function App() {
   const [reviews, setReviews] = useState(ReviewData);
@@ -43,6 +45,7 @@ function App() {
             path='/'
             element={
               <>
+                <Navbar />
                 <Title />
                 <ReviewForm
                   onAddReview={onAddReview}
@@ -55,6 +58,7 @@ function App() {
                   onDelete={onDelete}
                   onEdit={onEdit}
                 />
+                <AboutIconLink />
               </>
             }
           ></Route>
