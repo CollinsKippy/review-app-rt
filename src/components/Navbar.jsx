@@ -42,7 +42,7 @@ function Navbar() {
               <NavLink
                 className='nav-link text-light'
                 to={{
-                  pathname: '/contact',
+                  pathname: '/contact/:id',
                 }}
               >
                 Contacts
