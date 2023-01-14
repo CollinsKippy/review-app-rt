@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav className='navbar navbar-expand-lg bg-body-tertiary'>
+    <nav className='navbar navbar-expand-lg bg-dark mb-5 border border-success border-3'>
       <div className='container-fluid'>
-        <Link className='navbar-brand' to={{ pathName: '/' }}>
+        <Link className='navbar-brand text-primary' to={{ pathName: '/' }}>
           ReviewApp
         </Link>
         <button
-          className='navbar-toggler'
+          className='navbar-toggler bg-light border border-tertiary'
           type='button'
           data-bs-toggle='collapse'
           data-bs-target='#navbarNav'
@@ -22,7 +22,7 @@ function Navbar() {
           <ul className='navbar-nav'>
             <li className='nav-item'>
               <Link
-                className='nav-link'
+                className='nav-link text-light'
                 to={{
                   pathname: '/',
                 }}
@@ -32,7 +32,7 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                className='nav-link'
+                className='nav-link text-light'
                 to={{
                   pathname: '/about',
                 }}
@@ -42,7 +42,7 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                className='nav-link'
+                className='nav-link text-light'
                 to={{
                   pathname: '/',
                 }}

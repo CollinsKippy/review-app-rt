@@ -39,13 +39,14 @@ function App() {
   return (
     <Router>
       <div className='my-container'>
+        <Navbar />
+
         <Routes>
           <Route
             index
             path='/'
             element={
               <>
-                <Navbar />
                 <Title />
                 <ReviewForm
                   onAddReview={onAddReview}
