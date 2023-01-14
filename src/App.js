@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import AboutPage from './pages/AboutPage';
 import AboutIconLink from './components/AboutIconLink';
 import Navbar from './components/Navbar';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   const [reviews, setReviews] = useState(ReviewData);
@@ -65,6 +66,7 @@ function App() {
           ></Route>
 
           <Route path='/about' element={<AboutPage />} />
+          <Route path='/contact' element={<ContactPage />} />
         </Routes>
       </div>
     </Router>

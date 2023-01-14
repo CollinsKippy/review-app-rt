@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
+
   return (
     <nav className='navbar navbar-expand-lg bg-dark mb-5 border border-success border-3'>
       <div className='container-fluid'>
-        <Link className='navbar-brand text-primary' to={{ pathName: '/' }}>
+        <span className='navbar-brand text-primary'>
           ReviewApp
-        </Link>
+        </span>
         <button
           className='navbar-toggler bg-light border border-tertiary'
           type='button'
@@ -21,34 +22,34 @@ function Navbar() {
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav'>
             <li className='nav-item'>
-              <Link
+              <NavLink
                 className='nav-link text-light'
                 to={{
                   pathname: '/',
                 }}
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className='nav-item'>
-              <Link
+              <NavLink
                 className='nav-link text-light'
                 to={{
                   pathname: '/about',
                 }}
               >
                 About
-              </Link>
+              </NavLink>
             </li>
             <li className='nav-item'>
-              <Link
+              <NavLink
                 className='nav-link text-light'
                 to={{
-                  pathname: '/',
+                  pathname: '/contact',
                 }}
               >
                 Contacts
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
