@@ -1,13 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
 function Navbar() {
-
   return (
     <nav className='navbar navbar-expand-lg bg-dark mb-5 border border-success border-3'>
       <div className='container-fluid'>
-        <span className='navbar-brand text-primary'>
-          ReviewApp
-        </span>
+        <span className='navbar-brand text-primary'>ReviewApp</span>
         <button
           className='navbar-toggler bg-light border border-tertiary'
           type='button'
