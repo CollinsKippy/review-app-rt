@@ -6,6 +6,7 @@ Updated with delete review functionality via Prop-Drilling.
 Added Stats Section.
 Added Framer Motion.
 Added React-Router.
+Getting route parameters with the useParams() hook.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
