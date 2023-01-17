@@ -42,13 +42,9 @@ export function ReviewProvider({ children }) {
   const handleUpdateCompleted = ({ id, comment, rating }) => {
     setReviews((prevReviews) => {
       return [
-        ...prevReviews.map((rev) => {
-          if (rev.id === id) {
-            return { ...rev, comment, rating };
-          } else {
-            return rev;
-          }
-        }),
+        ...prevReviews.map((rev) =>
+          rev.id === id ? { ...rev, comment, rating } : rev
+        ),
       ];
     });
 
