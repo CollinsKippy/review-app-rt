@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-## Testing React App
+# Simple Review and Rating App with React
 
 Updated with delete review functionality via Prop-Drilling.
 Added Stats Section.
