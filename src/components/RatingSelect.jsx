@@ -1,14 +1,16 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ReviewContext from '../contexts/ReviewContext';
 
-function RatingSelect(props) {
-  const { onRatingSelected } = useContext(ReviewContext);
+function RatingSelect() {
+  const { editableObject, onRatingSelected } = useContext(ReviewContext);
   const [rating, setRating] = useState(null);
 
-  /**
-   * On Rating Selected (Radio button group)
-   * @param {Event} e Event
-   */
+  useEffect(() => {
+    if (!editableObject?.review?.edited) {
+      setRating((prevRating) => editableObject?.review?.rating);
+    }
+  }, [editableObject]);
+
   const handleRatingSelected = (e) => {
     onRatingSelected(+e.target.value);
     setRating(+e.target.value);

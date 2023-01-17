@@ -8,8 +8,13 @@ export default ReviewContext;
 export function ReviewProvider({ children }) {
   const [reviews, setReviews] = useState(ReviewData);
   const [rating, setRating] = useState();
+  const [editableObject, setEditableObject] = useState({});
 
-  const onAddReview = ({ comment, rating }) => {
+  const handleRatingSelected = (rating) => {
+    setRating(rating);
+  };
+
+  const handleAdd = ({ comment, rating }) => {
     const newReview = {
       id: uuidv4(),
       comment,
@@ -19,12 +24,31 @@ export function ReviewProvider({ children }) {
     setReviews((reviews) => [newReview, ...reviews]);
   };
 
-  const onDelete = (id) => {
-    setReviews((reviews) => [...reviews.filter((review) => review.id !== id)]);
+  const handleDelete = (id) => {
+    setReviews((prevReviews) => [
+      ...prevReviews.filter((review) => review.id !== id),
+    ]);
   };
 
-  const onRatingSelected = (rating) => {
-    setRating(rating);
+  const handleEdit = (id) => {
+    const review = reviews.find((r) => r.id === id);
+    if (review) {
+      setEditableObject({ review, edited: false });
+    }
+  };
+
+  const handleUpdateCompleted = ({ id, comment, rating }) => {
+    setReviews((prevReviews) => {
+      return [
+        ...prevReviews.map((rev) => {
+          if (rev.id === id) {
+            return { ...rev, comment, rating };
+          } else {
+            return rev;
+          }
+        }),
+      ];
+    });
   };
 
   return (
@@ -32,9 +56,12 @@ export function ReviewProvider({ children }) {
       value={{
         reviews: reviews,
         rating: rating,
-        onDelete: onDelete,
-        onAddReview: onAddReview,
-        onRatingSelected: onRatingSelected,
+        editableObject: editableObject,
+        onDelete: handleDelete,
+        onAddReview: handleAdd,
+        onRatingSelected: handleRatingSelected,
+        onEdit: handleEdit,
+        onUpdateCompleted: handleUpdateCompleted,
       }}
     >
       {children}

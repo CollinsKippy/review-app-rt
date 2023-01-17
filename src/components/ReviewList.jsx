@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import ReviewContext from '../contexts/ReviewContext';
 
 export function ReviewList(props) {
-  const { onEdit } = props;
   const { reviews } = useContext(ReviewContext);
 
   if (reviews?.length === 0) {
@@ -20,7 +19,7 @@ export function ReviewList(props) {
           initial={{ opacity: 0, scale: 0.98, x: -30, y: 10 }}
           animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         >
-          <Review review={review} key={review.id} onEdit={onEdit} />
+          <Review review={review} key={review.id} />
         </motion.div>
       ))}
     </div>

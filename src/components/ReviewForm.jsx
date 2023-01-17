@@ -1,12 +1,21 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import RatingSelect from './RatingSelect';
 import { motion } from 'framer-motion';
 import ReviewContext from '../contexts/ReviewContext';
 
-function ReviewForm(props) {
-  const { rating, onAddReview } = useContext(ReviewContext);
+function ReviewForm() {
+  const { rating, editableObject, onAddReview, onUpdateCompleted } =
+    useContext(ReviewContext);
   const [comment, setComment] = useState('');
   const [hasError, setHasError] = useState(false);
+  const [isBeingEdited, setIsBeingEdited] = useState(false);
+
+  useEffect(() => {
+    if (editableObject && !editableObject?.review?.edited) {
+      setComment((_) => editableObject?.review?.comment);
+      setIsBeingEdited((_) => setIsBeingEdited(true));
+    }
+  }, [editableObject]);
 
   /**
    * Submit Form
@@ -20,7 +29,11 @@ function ReviewForm(props) {
     } else {
       setHasError(false);
 
-      onAddReview({ comment, rating });
+      if (isBeingEdited) {
+        onUpdateCompleted({ id: editableObject?.review?.id, comment, rating });
+      } else {
+        onAddReview({ comment, rating });
+      }
       setComment('');
     }
   };

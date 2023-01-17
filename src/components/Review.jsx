@@ -4,8 +4,8 @@ import { FaTimes, FaEdit } from 'react-icons/fa';
 import ReviewContext from '../contexts/ReviewContext';
 
 function Review(props) {
-  const { review, onEdit } = props;
-  const {onDelete} = useContext(ReviewContext);
+  const { review } = props;
+  const { onEdit, onDelete } = useContext(ReviewContext);
 
   return (
     <div className='review-item bg-secondary shadow-sm'>
@@ -21,7 +21,10 @@ function Review(props) {
         >
           <FaTimes />
         </button>
-        <button className='btn btn-outline-secondary' onClick={() => onEdit(review.id)}>
+        <button
+          className='btn btn-outline-secondary'
+          onClick={() => onEdit(review.id)}
+        >
           <FaEdit />
         </button>
       </div>
