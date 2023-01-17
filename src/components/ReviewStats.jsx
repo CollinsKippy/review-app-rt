@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import ReviewContext from '../contexts/ReviewContext';
 
-function ReviewStats(props) {
-  const { reviews } = props;
+function ReviewStats() {
+  const { reviews } = useContext(ReviewContext);
 
   let average =
     reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
@@ -16,9 +16,5 @@ function ReviewStats(props) {
     </div>
   );
 }
-
-ReviewStats.propTypes = {
-  reviews: PropTypes.array.isRequired,
-};
 
 export default ReviewStats;

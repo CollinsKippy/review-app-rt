@@ -1,15 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
+import ReviewContext from '../contexts/ReviewContext';
 
 function RatingSelect(props) {
-  const { onRatingSelected, updated } = props;
-
+  const { onRatingSelected } = useContext(ReviewContext);
   const [rating, setRating] = useState(null);
-
-  useEffect(() => {
-    if (updated) {
-      setRating(null);
-    }
-  }, [updated]);
 
   /**
    * On Rating Selected (Radio button group)

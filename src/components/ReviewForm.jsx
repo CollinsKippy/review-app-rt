@@ -1,21 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import RatingSelect from './RatingSelect';
 import { motion } from 'framer-motion';
+import ReviewContext from '../contexts/ReviewContext';
 
 function ReviewForm(props) {
-  const { onAddReview, updated } = props;
-
+  const { rating, onAddReview } = useContext(ReviewContext);
   const [comment, setComment] = useState('');
   const [hasError, setHasError] = useState(false);
-  const [rating, setRating] = useState(null);
-
-  /**
-   * Handler called by RatingSelect component
-   * @param {number} rating Experience Rating
-   */
-  const onRatingSelected = (rating) => {
-    setRating(rating);
-  };
 
   /**
    * Submit Form
@@ -31,7 +22,6 @@ function ReviewForm(props) {
 
       onAddReview({ comment, rating });
       setComment('');
-      setRating(null);
     }
   };
 
@@ -39,7 +29,7 @@ function ReviewForm(props) {
     <>
       <h2 className='mb-4'>Your Review</h2>
       <form onSubmit={onSubmit} className='d-flex flex-column gap-4'>
-        <RatingSelect onRatingSelected={onRatingSelected} updated={updated} />
+        <RatingSelect />
         <textarea
           type='text'
           rows={3}

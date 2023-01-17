@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import { FaTimes, FaEdit } from 'react-icons/fa';
+import ReviewContext from '../contexts/ReviewContext';
 
 function Review(props) {
-  const { review, onDelete, onEdit } = props;
+  const { review, onEdit } = props;
+  const {onDelete} = useContext(ReviewContext);
 
   return (
     <div className='review-item bg-secondary shadow-sm'>

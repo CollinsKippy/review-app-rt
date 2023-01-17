@@ -1,11 +1,13 @@
-import PropTypes from 'prop-types';
 import Review from './Review';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import ReviewContext from '../contexts/ReviewContext';
 
 export function ReviewList(props) {
-  const { reviews, onDelete, onEdit } = props;
+  const { onEdit } = props;
+  const { reviews } = useContext(ReviewContext);
 
-  if (!reviews || reviews.length === 0) {
+  if (reviews?.length === 0) {
     return <h4 className='mt-5 bg-secondary p-4'>No reviews yet.</h4>;
   }
 
@@ -18,26 +20,11 @@ export function ReviewList(props) {
           initial={{ opacity: 0, scale: 0.98, x: -30, y: 10 }}
           animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         >
-          <Review
-            review={review}
-            key={review.id}
-            onDelete={onDelete}
-            onEdit={onEdit}
-          />
+          <Review review={review} key={review.id} onEdit={onEdit} />
         </motion.div>
       ))}
     </div>
   );
 }
-
-ReviewList.propTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      comment: PropTypes.string,
-      rating: PropTypes.number,
-    })
-  ),
-};
 
 export default ReviewList;
