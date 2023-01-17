@@ -6,7 +6,7 @@ function RatingSelect() {
   const [rating, setRating] = useState(null);
 
   useEffect(() => {
-    if (!editableObject?.edited) {
+    if (editableObject) {
       setRating((_) => editableObject?.review?.rating);
     }
   }, [editableObject]);
