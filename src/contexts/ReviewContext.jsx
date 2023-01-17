@@ -8,7 +8,7 @@ export default ReviewContext;
 export function ReviewProvider({ children }) {
   const [reviews, setReviews] = useState(ReviewData);
   const [rating, setRating] = useState();
-  const [editableObject, setEditableObject] = useState({});
+  const [editableObject, setEditableObject] = useState();
 
   const handleRatingSelected = (rating) => {
     setRating(rating);
@@ -22,6 +22,8 @@ export function ReviewProvider({ children }) {
     };
 
     setReviews((reviews) => [newReview, ...reviews]);
+    setRating(null);
+    setEditableObject((_) => null);
   };
 
   const handleDelete = (id) => {
@@ -49,6 +51,8 @@ export function ReviewProvider({ children }) {
         }),
       ];
     });
+
+    setEditableObject((_) => null);
   };
 
   return (
