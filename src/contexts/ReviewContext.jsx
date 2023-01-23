@@ -1,14 +1,23 @@
-import React, { createContext, useState } from 'react';
-import ReviewData from '../data/ReviewData';
+import React, { createContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const ReviewContext = createContext(null);
 export default ReviewContext;
 
 export function ReviewProvider({ children }) {
-  const [reviews, setReviews] = useState(ReviewData);
+  const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState();
   const [editableObject, setEditableObject] = useState();
+
+  useEffect(() => {
+    getReviews();
+  }, []);
+
+  const getReviews = async () => {
+    const res = await fetch(`http://localhost:5000/reviews`);
+    const data = await res.json();
+    setReviews(data);
+  };
 
   const handleRatingSelected = (rating) => {
     setRating(rating);
