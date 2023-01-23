@@ -10,23 +10,25 @@ export function ReviewList() {
     return <h4 className='mt-5 bg-secondary p-4'>No reviews yet.</h4>;
   }
 
+  const isLoadingSection = (
+    <>
+      <p className='alert alert-primary'>Loading reviews...</p>
+      <div className='progress'>
+        <div
+          className='progress-bar progress-bar-striped progress-bar-animated w-100'
+          role='progressbar'
+          aria-valuenow='100'
+          aria-valuemin='0'
+          aria-valuemax='100'
+        ></div>
+      </div>
+    </>
+  );
+
   return (
     <div className='reviews'>
       <h2>Previous Reviews</h2>
-      {isLoading && (
-        <>
-          <p className='alert alert-primary'>Loading reviews...</p>
-          <div className='progress'>
-            <div
-              className='progress-bar progress-bar-striped progress-bar-animated w-100'
-              role='progressbar'
-              aria-valuenow='100'
-              aria-valuemin='0'
-              aria-valuemax='100'
-            ></div>
-          </div>
-        </>
-      )}
+      {isLoading && isLoadingSection}
       {reviews.map((review) => (
         <motion.div
           key={review.id}
