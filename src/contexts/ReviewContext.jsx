@@ -5,20 +5,27 @@ const ReviewContext = createContext(null);
 export default ReviewContext;
 
 export function ReviewProvider({ children }) {
+  const [isLoading, setIsLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState();
   const [editableObject, setEditableObject] = useState();
 
+  ////////////////////// REST /////////////////////
+  // 1. GET Reviews
   useEffect(() => {
     getReviews();
   }, []);
 
   const getReviews = async () => {
-    const res = await fetch(`http://localhost:5000/reviews`);
+    const res = await fetch(
+      `http://localhost:5000/reviews?_sort=id&_order=desc`
+    );
     const data = await res.json();
     setReviews(data);
+    setIsLoading(false);
   };
 
+  ////////////////// FUNCTION HANDLERS ////////////////////
   const handleRatingSelected = (rating) => {
     setRating(rating);
   };
@@ -67,6 +74,7 @@ export function ReviewProvider({ children }) {
         reviews: reviews,
         rating: rating,
         editableObject: editableObject,
+        isLoading: isLoading,
         onDelete: handleDelete,
         onAddReview: handleAdd,
         onRatingSelected: handleRatingSelected,
