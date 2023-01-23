@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import ReviewContext from '../contexts/ReviewContext';
 
-export function ReviewList(props) {
+export function ReviewList() {
   const { reviews } = useContext(ReviewContext);
 
   if (reviews?.length === 0) {
