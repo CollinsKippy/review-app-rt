@@ -1,0 +1,8 @@
+{
+  "reviews": [
+    { "id": 1, "comment": "Great service provided", "rating": 9.0 },
+    { "id": 2, "comment": "Quite okay. Room for improvement", "rating": 7.0 },
+    { "id": 3, "comment": "Excellent food. Great music.", "rating": 10.0 },
+    { "id": 4, "comment": "Not bad. Keep improving.", "rating": 6.0 }
+  ]
+}
