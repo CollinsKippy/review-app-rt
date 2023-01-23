@@ -45,6 +45,7 @@ export function ReviewProvider({ children }) {
     const review = reviews.find((r) => r.id === id);
     if (review) {
       setEditableObject({ review, edited: false });
+      setRating(review.rating);
     }
   };
 
