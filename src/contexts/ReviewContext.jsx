@@ -18,7 +18,7 @@ export function ReviewProvider({ children }) {
 
   const getReviews = async () => {
     const res = await fetch(
-      `http://localhost:5000/reviews?_sort=id&_order=desc`
+      `/reviews?_sort=id&_order=desc`
     );
     const data = await res.json();
     setReviews(data);
