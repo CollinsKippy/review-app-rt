@@ -17,12 +17,53 @@ export function ReviewProvider({ children }) {
   }, []);
 
   const getReviews = async () => {
-    const res = await fetch(
-      `/reviews?_sort=id&_order=desc`
-    );
-    const data = await res.json();
-    setReviews(data);
-    setIsLoading(false);
+    try {
+      const res = await fetch(`/reviews?_sort=id&_order=desc`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      const data = await res.json();
+      setReviews(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  // 2. POST Review
+  const postReview = async (review) => {
+    let savedData = null;
+    try {
+      const res = await fetch('/reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(review),
+      });
+
+      savedData = await res.json();
+    } catch (error) {
+      console.log({ error });
+    }
+    return savedData;
+  };
+
+  // DELETE Review
+  const deleteReview = async (id) => {
+    try {
+      const res = await fetch(`/reviews/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      return res?.ok;
+    } catch (error) {
+      console.log({ error });
+      return false;
+    }
   };
 
   ////////////////// FUNCTION HANDLERS ////////////////////
@@ -30,22 +71,29 @@ export function ReviewProvider({ children }) {
     setRating(rating);
   };
 
-  const handleAdd = ({ comment, rating }) => {
+  const handleAdd = async ({ comment, rating }) => {
     const newReview = {
-      id: uuidv4(),
       comment,
       rating,
     };
 
-    setReviews((reviews) => [newReview, ...reviews]);
-    setRating(null);
-    setEditableObject((_) => null);
+    const data = await postReview(newReview);
+
+    if (data) {
+      setReviews((reviews) => [data, ...reviews]);
+      setRating(null);
+      setEditableObject((_) => null);
+    }
   };
 
-  const handleDelete = (id) => {
-    setReviews((prevReviews) => [
-      ...prevReviews.filter((review) => review.id !== id),
-    ]);
+  const handleDelete = async (id) => {
+    const isDeleted = await deleteReview(id);
+
+    if (isDeleted) {
+      setReviews((prevReviews) => [
+        ...prevReviews.filter((review) => review.id !== id),
+      ]);
+    }
   };
 
   const handleEdit = (id) => {
