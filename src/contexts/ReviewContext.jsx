@@ -80,7 +80,7 @@ export function ReviewProvider({ children }) {
     const data = await postReview(newReview);
 
     if (data) {
-      setReviews((reviews) => [data, ...reviews]);
+      setReviews((prevReviews) => [data, ...prevReviews]);
       setRating(null);
       setEditableObject((_) => null);
     }
