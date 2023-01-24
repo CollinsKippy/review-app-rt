@@ -10,6 +10,7 @@ Handled Updating a Review using the useContext() Hook.\
 Fixed bugs on editing and adding states.\
 Json-Server for fake Backend.\
 Added HTTP POST and DELETE with Javascript fetch() API.\
+Added HTTP PUT as well.\
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
