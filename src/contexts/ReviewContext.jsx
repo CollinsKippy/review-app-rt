@@ -49,6 +49,24 @@ export function ReviewProvider({ children }) {
     return savedData;
   };
 
+  // PUT Review
+  const updateReview = async (id, review) => {
+    try {
+      const res = await fetch(`/reviews/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(review),
+      });
+
+      return res?.ok;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
   // DELETE Review
   const deleteReview = async (id) => {
     try {
@@ -104,14 +122,16 @@ export function ReviewProvider({ children }) {
     }
   };
 
-  const handleUpdateCompleted = ({ id, comment, rating }) => {
-    setReviews((prevReviews) => {
-      return [
-        ...prevReviews.map((rev) =>
-          rev.id === id ? { ...rev, comment, rating } : rev
-        ),
-      ];
-    });
+  const handleUpdateCompleted = async (updRev) => {
+    const { id } = updRev;
+
+    const isUpdated = await updateReview(id, updRev);
+
+    if (isUpdated) {
+      setReviews(
+        reviews.map((rev) => (rev.id === id ? { ...rev, ...updRev } : rev))
+      );
+    }
 
     setEditableObject((_) => null);
   };
